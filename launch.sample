@@ -1,0 +1,17 @@
+#!/bin/bash
+export SITE=testsite_com
+export PORT=8050
+export DIR_PATH=/tmp/websites
+export IMAGE=emcconkey/apache-php
+
+if [ ! -d "$DIR_PATH/$SITE/web" ]; then
+	mkdir -p $DIR_PATH/$SITE/web
+
+	chgrp -R 1000 $DIR_PATH/$SITE/web
+	chown -R 1000 $DIR_PATH/$SITE/web
+fi
+
+docker pull $IMAGE
+docker stop $SITE
+docker rm $SITE
+docker run --name $SITE -d -p $PORT:8000 -e RPAF_PROXY_SERVER=10.0.0.1 -v $DIR_PATH/$SITE/log:/var/log/apache2 -v $DIR_PATH/$SITE/web:/var/www/html $IMAGE &
