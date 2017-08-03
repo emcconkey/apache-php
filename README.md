@@ -5,6 +5,8 @@ This pulls ubuntu:latest, installs apache2.4 and php7.0, gives you volumes for t
 
 It also comes preconfigured with mod_rpaf in case you are running this behind a proxy, so you can log the remote host IP correctly.
 
+Github repository: https://github.com/emcconkey/apache-php
+
 Quick Start
 -------------------
 You should mount a volume at `/var/www/html/` and store your html/php files there.
