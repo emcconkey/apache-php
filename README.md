@@ -94,9 +94,11 @@ session
 standard
 mysqlnd
 PDO
+xml
 calendar
 ctype
 curl
+dom
 mbstring
 fileinfo
 ftp
@@ -113,13 +115,20 @@ Phar
 posix
 readline
 shmop
+SimpleXML
 soap
 sockets
 sysvmsg
 sysvsem
 sysvshm
 tokenizer
+wddx
+xmlreader
+xmlwriter
+xsl
+zip
 Zend OPcache
+
 ```
 
 Apache Modules
@@ -157,6 +166,10 @@ The following apache modules are enabled. Output of apache2ctl -M
  setenvif_module (shared)
  status_module (shared)
 ```
+
+Extras
+-------------------
+Bandwidthd is included by default, exporting the bandwidth reports to /var/www/html/bandwidth
 
 
 License

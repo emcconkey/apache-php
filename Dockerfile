@@ -5,9 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup \
 	&& echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache \
-	&& /usr/sbin/useradd webuser -s /bin/bash
-
-RUN apt-get update \
+	&& apt-get update \
 	&& apt-get -y upgrade \
 	&& apt-get -y install \
 	apache2 \
@@ -20,13 +18,18 @@ RUN apt-get update \
 	php7.0-curl \
 	php7.0-gd \
 	php7.0-mcrypt \
+	php7.0-zip \
+	php-pclzip \
+	php7.0-xml \
 	php-mongodb \
 	php-tcpdf \
+	bandwidthd \
 	curl \
 	unzip \
 	pwgen \
 	git-core \
-	&& rm -rf /var/lib/apt
+	&& rm -rf /var/lib/apt \
+	&& /usr/sbin/useradd webuser -s /bin/bash
 
 RUN a2enmod php7.0 && a2enmod rewrite && a2enmod remoteip
 
@@ -54,5 +57,7 @@ EXPOSE 8000
 
 ADD run-apache.sh /run-apache.sh
 ADD site.conf /etc/apache2/sites-enabled/site.conf
+ADD bandwidthd.conf.orig /etc/bandwidthd/bandwidthd.conf.orig
+ADD setup-bandwidthd.pl /setup-bandwidthd.pl
 
 CMD ["/run-apache.sh"]
