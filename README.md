@@ -12,7 +12,7 @@ Quick Start
 You should mount a volume at `/var/www/html/` and store your html/php files there.
 
 ```bash
-docker run --name apache-php -d -p 8080:8000 \
+docker run --name apache-php -d -p 8080:80 \
   -v /host/path/to/html:/var/www/html/ \
   -v /host/path/to/logs:/var/log/apache2/ \
   emcconkey/apache-php
@@ -24,7 +24,7 @@ If you want to change the apache config, map a volume to /etc/apache2/sites-enab
 
 
 ```bash
-docker run --name apache-php -d -p 8080:8000 \
+docker run --name apache-php -d -p 8080:80 \
   -v /host/path/to/html:/var/www/html/ \
   -v /host/path/to/logs:/var/log/apache2/ \
   -v /host/path/to/config:/etc/apache2/sites-enabled \
@@ -55,7 +55,7 @@ Default: 127.0.0.1
 
 Exposed Ports
 -------------------
-8000 is the default port apache listens on internally.
+80 is the default port apache listens on internally.
 
 Mapping Volumes
 -------------------

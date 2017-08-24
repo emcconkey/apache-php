@@ -37,7 +37,7 @@ RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/ph
 	&& sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/7.0/apache2/php.ini \
 	&& sed -i "s/post_max_size = .*$/post_max_size = 20M/" /etc/php/7.0/apache2/php.ini \
 	&& sed -i "s/upload_max_filesize = .*$/upload_max_filesize = 20M/" /etc/php/7.0/apache2/php.ini \
-	&& echo "Listen 8000" > /etc/apache2/ports.conf
+	&& echo "Listen 80" > /etc/apache2/ports.conf
 
 RUN rm -f /etc/apache2/sites-enabled/000-default.conf \
 	&& rm -f /etc/apache2/envvars \
@@ -53,7 +53,7 @@ ENV RPAF_PROXY_SERVER 127.0.0.1
 
 VOLUME  ["/etc/apache2/sites-enabled", "/var/www/html", "/var/log/apache2" ]
 
-EXPOSE 8000
+EXPOSE 80
 
 ADD run-apache.sh /run-apache.sh
 ADD site.conf /etc/apache2/sites-enabled/site.conf

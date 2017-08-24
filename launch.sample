@@ -14,4 +14,4 @@ fi
 docker pull $IMAGE
 docker stop $SITE
 docker rm $SITE
-docker run --name $SITE -d -p $PORT:8000 -e RPAF_PROXY_SERVER=10.0.0.1 -v $DIR_PATH/$SITE/log:/var/log/apache2 -v $DIR_PATH/$SITE/web:/var/www/html $IMAGE &
+docker run --name $SITE -d -p $PORT:80 -e RPAF_PROXY_SERVER=10.0.0.1 -v $DIR_PATH/$SITE/log:/var/log/apache2 -v $DIR_PATH/$SITE/web:/var/www/html $IMAGE &
