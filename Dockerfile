@@ -24,10 +24,12 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup \
 	php-mongodb \
 	php-tcpdf \
 	bandwidthd \
+	nano \
 	curl \
 	unzip \
 	pwgen \
 	git-core \
+	ssmtp \
 	&& rm -rf /var/lib/apt \
 	&& /usr/sbin/useradd webuser -s /bin/bash
 
@@ -50,13 +52,18 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 ENV RPAF_PROXY_SERVER 127.0.0.1
+ENV SMTP_RELAY_HOST 10.0.0.1
+ENV SMTP_RELAY_PORT 25
+ENV SMTP_HOSTNAME localhost
+ENV SMTP_REWRITE_DOMAIN localhost
 
-VOLUME  ["/etc/apache2/sites-enabled", "/var/www/html", "/var/log/apache2" ]
+VOLUME  ["/etc/apache2/sites-enabled", "/var/www/html", "/var/log/apache2", "/etc/ssmtp" ]
 
 EXPOSE 80
 
 ADD run-apache.sh /run-apache.sh
 ADD site.conf /etc/apache2/sites-enabled/site.conf
+ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
 ADD bandwidthd.conf.orig /etc/bandwidthd/bandwidthd.conf.orig
 ADD setup-bandwidthd.pl /setup-bandwidthd.pl
 
