@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clean out old pidfiles and tmp files
-rm -rf /run/apache2/*
+rm -rf /run/*.pid
 rm -rf /tmp/*
 
 mkdir /var/log/apache2/bandwidthd
