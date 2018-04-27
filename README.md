@@ -169,7 +169,7 @@ The following apache modules are enabled. Output of apache2ctl -M
 
 Extras
 -------------------
-Bandwidthd is included by default, exporting the bandwidth reports to /var/www/html/bandwidth
+Bandwidthd is *no longer* included by default - see https://hub.docker.com/r/emcconkey/apache-php-bandwidthd/ for the image with bandwidthd in it. 
 
 
 License

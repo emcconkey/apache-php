@@ -23,7 +23,6 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup \
 	php7.0-xml \
 	php-mongodb \
 	php-tcpdf \
-	bandwidthd \
 	nano \
 	curl \
 	unzip \
@@ -64,7 +63,5 @@ EXPOSE 80
 ADD run-apache.sh /run-apache.sh
 ADD site.conf /etc/apache2/sites-enabled/site.conf
 ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
-ADD bandwidthd.conf.orig /etc/bandwidthd/bandwidthd.conf.orig
-ADD setup-bandwidthd.pl /setup-bandwidthd.pl
 
 CMD ["/run-apache.sh"]
