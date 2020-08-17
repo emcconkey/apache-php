@@ -1,11 +1,20 @@
 
 About This Image
 -------------------
-This pulls ubuntu:latest, installs apache2.4 and php7.0, gives you volumes for the /var/www/html and /etc/apache2/sites-enabled so you can manage your web content and config files out of the container. Specifically, this is useful for WordPress and custom PHP/MySQL web applications.
+This pulls ubuntu:latest, installs apache2.4 and php7.4, gives you volumes for the /var/www/html and /etc/apache2/sites-enabled so you can manage your web content and config files out of the container. Specifically, this is useful for WordPress and custom PHP/MySQL web applications.
 
 It also comes preconfigured with mod_rpaf in case you are running this behind a proxy, so you can log the remote host IP correctly.
 
 Github repository: https://github.com/emcconkey/apache-php
+
+Tags
+-------------------
+emcconkey/apache-php:7.0 - php version 7.0
+
+emcconkey/apache-php:7.4 - php version 7.4
+
+emcconkey/apache-php:latest - php version 7.4
+
 
 Quick Start
 -------------------
@@ -92,6 +101,7 @@ Reflection
 SPL
 session
 standard
+sodium
 mysqlnd
 PDO
 xml
@@ -100,6 +110,7 @@ ctype
 curl
 dom
 mbstring
+FFI
 fileinfo
 ftp
 gd
@@ -107,7 +118,6 @@ gettext
 iconv
 json
 exif
-mcrypt
 mongodb
 mysqli
 pdo_mysql
@@ -122,14 +132,14 @@ sysvmsg
 sysvsem
 sysvshm
 tokenizer
-wddx
 xmlreader
 xmlwriter
 xsl
 zip
 Zend OPcache
-
 ```
+As of PHP 7.2 mcrypt is deprecated, so only the 7.0 version of this image contains mcrypt.
+
 
 Apache Modules
 -------------------
@@ -161,6 +171,7 @@ The following apache modules are enabled. Output of apache2ctl -M
  negotiation_module (shared)
  php7_module (shared)
  remoteip_module (shared)
+ reqtimeout_module (shared)
  rewrite_module (shared)
  rpaf_module (shared)
  setenvif_module (shared)
