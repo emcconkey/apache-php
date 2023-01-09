@@ -15,6 +15,8 @@ emcconkey/apache-php:7.4 - php version 7.4
 
 emcconkey/apache-php:latest - php version 7.4
 
+emcconkey/apache-php:latest - php version 8.1
+
 
 Quick Start
 -------------------
