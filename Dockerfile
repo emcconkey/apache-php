@@ -9,17 +9,17 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup \
 	&& apt-get -y upgrade \
 	&& apt-get -y install \
 	apache2 \
-	libapache2-mod-php7.4 \
+	libapache2-mod-php \
 	libapache2-mod-rpaf \
-	php7.4 \
-	php7.4-mysql \
-	php7.4-mbstring \
-	php7.4-soap \
-	php7.4-curl \
-	php7.4-gd \
-	php7.4-zip \
+	php \
+	php-mysql \
+	php-mbstring \
+	php-soap \
+	php-curl \
+	php-gd \
+	php-zip \
 	php-pclzip \
-	php7.4-xml \
+	php-xml \
 	php-mongodb \
 	php-tcpdf \
 	nano \
@@ -31,12 +31,12 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup \
 	&& rm -rf /var/lib/apt \
 	&& /usr/sbin/useradd webuser -s /bin/bash
 
-RUN a2enmod php7.4 && a2enmod rewrite && a2enmod remoteip
+RUN a2enmod php8.1 && a2enmod rewrite && a2enmod remoteip
 
-RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.4/apache2/php.ini \
-	&& sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/7.4/apache2/php.ini \
-	&& sed -i "s/post_max_size = .*$/post_max_size = 50M/" /etc/php/7.4/apache2/php.ini \
-	&& sed -i "s/upload_max_filesize = .*$/upload_max_filesize = 50M/" /etc/php/7.4/apache2/php.ini \
+RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/8.1/apache2/php.ini \
+	&& sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/8.1/apache2/php.ini \
+	&& sed -i "s/post_max_size = .*$/post_max_size = 50M/" /etc/php/8.1/apache2/php.ini \
+	&& sed -i "s/upload_max_filesize = .*$/upload_max_filesize = 50M/" /etc/php/8.1/apache2/php.ini \
 	&& echo "Listen 80" > /etc/apache2/ports.conf
 
 RUN rm -f /etc/apache2/sites-enabled/000-default.conf \
