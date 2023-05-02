@@ -56,8 +56,6 @@ ENV SMTP_RELAY_PORT 25
 ENV SMTP_HOSTNAME localhost
 ENV SMTP_REWRITE_DOMAIN localhost
 
-VOLUME  ["/etc/apache2/sites-enabled", "/var/www/html", "/var/log/apache2", "/etc/ssmtp" ]
-
 EXPOSE 80
 
 ADD run-apache.sh /run-apache.sh
