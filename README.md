@@ -17,6 +17,8 @@ emcconkey/apache-php:latest - php version 7.4
 
 emcconkey/apache-php:latest - php version 8.1
 
+emcconkey/apache-php:no-volumes - follows latest but does not expose any volumes. Useful for embedding all your files in the container.
+
 
 Quick Start
 -------------------
